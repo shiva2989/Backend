@@ -28,4 +28,9 @@ sh label: '', script: '''sudo service nginx status'''
 stage('checking the ports'){
 sh label: '', script: '''sudo netstat -plntu'''
 }
+
+stage('listing the files in opt'){
+sh label: '', script: '''sudo ls -l /opt/'''
+}
+
 }
