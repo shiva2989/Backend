@@ -1,0 +1,31 @@
+node{
+stage('scm checkout'){
+  git credentialsID: 'git-creds', url: 'https://github.com/shiva2989/Backend.git'
+}
+
+stage('Code Build'){
+  def gradleHome = tool name: 'gradle', type: 'gradle'
+  def gradleCMD = "${gradleHome}/bin/gradle"
+  sh "${gradleCMD} clean build"
+}
+
+stage('creating a testing dir')
+sh label: '', script: '''sudo mkdir /tmp/shiva'''
+}
+
+stage('Installing a net-tools')
+sh label: '', script: '''sudo apt-get install net-tools -y'''
+}
+
+stage('Installing a nginx')
+sh label: '', script: '''sudo apt-get install nginx -y'''
+}
+
+stage('checking services of nginx')
+sh label: '', script: '''sudo service nginx status'''
+}
+
+stage('checking the ports')
+sh label: '', script: '''sudo netstat -plntu'''
+}
+}
