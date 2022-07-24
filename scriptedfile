@@ -9,23 +9,23 @@ stage('Code Build'){
   sh "${gradleCMD} clean build"
 }
 
-stage('creating a testing dir')
+stage('creating a testing dir'){
 sh label: '', script: '''sudo mkdir /tmp/shiva'''
 }
 
-stage('Installing a net-tools')
+stage('Installing a net-tools'){
 sh label: '', script: '''sudo apt-get install net-tools -y'''
 }
 
-stage('Installing a nginx')
+stage('Installing a nginx'){
 sh label: '', script: '''sudo apt-get install nginx -y'''
 }
 
-stage('checking services of nginx')
+stage('checking services of nginx'){
 sh label: '', script: '''sudo service nginx status'''
 }
 
-stage('checking the ports')
+stage('checking the ports'){
 sh label: '', script: '''sudo netstat -plntu'''
 }
 }
