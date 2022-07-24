@@ -9,6 +9,10 @@ stage('Code Build'){
   sh "${gradleCMD} clean build"
 }
 
+stage('removing  the files in opt'){
+sh label: '', script: '''sudo rm -rf /opt/shiva'''
+}
+
 stage('creating a testing dir'){
 sh label: '', script: '''sudo mkdir /tmp/shiva'''
 }
